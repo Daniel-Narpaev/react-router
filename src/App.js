@@ -1,23 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
-
+import { Routes, Route } from "react-router-dom";
+import Products from "./pages/Products"
+import MyOrders from "./pages/MyOrders"
+import MyCart from "./pages/MyCart"
+import Layout from "./layout/Layout"
+import Button from "./components/UI/Button";
+import Details from "./pages/Details";
+const productsName = [
+  {
+    id:1,
+    title:'Product name 1',
+  },
+  {
+    id:2,
+    title:'Product name 2',
+  },
+  {
+    id:3,
+    title:'Product name 3',
+  }
+]
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div >
+      <Routes>
+        <Route path="/" element={ <Layout/> }>
+
+         <Route path="/products" element={ <Products products={productsName}/> }/>
+         <Route path="/products/:id/details" element={ <Details products={productsName}/> }/>
+         <Route path="/mycart" element={ <MyCart/> }/>
+         <Route path="/myorders" element={ <MyOrders/> }/> 
+
+        </Route>
+      </Routes>
     </div>
   );
 }
